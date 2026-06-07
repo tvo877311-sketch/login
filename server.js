@@ -56,6 +56,11 @@ app.get('/health', (req, res) => {
     res.json({ status: "online", time: Date.now() });
 });
 
+// Root-Endpunkt (damit Render keine 404 mehr liefert)
+app.get('/', (req, res) => {
+    res.json({ message: "Enox API läuft", status: "online", endpoints: ["POST /api/login"] });
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`✅ API läuft auf Port ${PORT}`);
